@@ -76,7 +76,7 @@ def mark_attendance():
 scheduler.add_job(mark_attendance, 'cron', hour=9, minute=30)
 scheduler.add_job(mark_attendance, 'cron', hour=18, minute=0)
 scheduler.add_job(mark_attendance, 'cron', hour=21, minute=15)
-scheduler.add_job(mark_attendance, 'cron', hour=23, minute=30)
+scheduler.add_job(mark_attendance, 'cron', hour=23, minute=50)
 scheduler.start()
 
 @app.route('/')
