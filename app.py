@@ -1,5 +1,5 @@
 from flask import Flask
-from apscheduler.schedulers.background import BackgroundScheduler
+# from apscheduler.schedulers.background import BackgroundScheduler
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
@@ -73,15 +73,16 @@ def mark_attendance():
         driver.quit()
 
 # Schedule the attendance marking function
-scheduler.add_job(mark_attendance, 'cron', hour=9, minute=30)
-scheduler.add_job(mark_attendance, 'cron', hour=18, minute=0)
-scheduler.add_job(mark_attendance, 'cron', hour=21, minute=15)
-scheduler.add_job(mark_attendance, 'cron', hour=23, minute=50)
-scheduler.start()
+# scheduler.add_job(mark_attendance, 'cron', hour=9, minute=30)
+# scheduler.add_job(mark_attendance, 'cron', hour=18, minute=0)
+# scheduler.add_job(mark_attendance, 'cron', hour=21, minute=15)
+# scheduler.add_job(mark_attendance, 'cron', hour=23, minute=50)
+# scheduler.start()
 
 @app.route('/')
 def index():
-    return "Attendance marking service is running."
+    mark_attendance()
+    return  f"Attendance marked {datetime.now().strftime("%B %d, %Y, %I:%M %p")}"
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run()
