@@ -3,15 +3,24 @@
 # Exit on error
 set -e
 
-echo "Installing Chrome..."
+echo "Downloading and unpacking Chrome..."
 
-# Use sudo to run commands as root
-sudo wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee /etc/apt/sources.list.d/google-chrome.list
-sudo apt-get update
-sudo apt-get install -y google-chrome-stable
+# Create a directory for Chrome
+mkdir -p /tmp/chrome
+cd /tmp/chrome
 
-# Verify installation
-google-chrome --version
+# Download a pre-built Chrome binary
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+
+# Extract the contents of the .deb package
+ar x google-chrome-stable_current_amd64.deb
+tar -xvf data.tar.xz
+
+# Move the Chrome binary to a directory included in the PATH
+mkdir -p $HOME/chrome
+mv opt/google/chrome/* $HOME/chrome/
+
+# Clean up
+rm -rf /tmp/chrome
 
 echo "Chrome installed successfully."
