@@ -82,7 +82,9 @@ def mark_attendance():
 @app.route('/')
 def index():
     mark_attendance()
-    return  f'Attendance marked {datetime.now().strftime("%B %d, %Y, %I:%M %p")}'
+    msg = 'Attendance marked ' + datetime.now().strftime("%B %d, %Y, %I:%M %p")
+    print(msg)
+    return  msg
 
 if __name__ == "__main__":
     app.run()
