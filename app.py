@@ -13,7 +13,7 @@ import time
 import logging
 
 # Setup logging
-logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
 # scheduler = BackgroundScheduler()
