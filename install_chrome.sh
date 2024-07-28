@@ -16,13 +16,17 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 ar x google-chrome-stable_current_amd64.deb
 tar -xvf data.tar.xz
 
-# Move the Chrome binary to a directory included in the PATH
-mv opt/google/chrome/* $HOME/chrome/
+# Ensure target directories are clean before moving new files
+rm -rf $HOME/chrome/opt/google/chrome
+mkdir -p $HOME/chrome/opt/google/chrome
+
+# Move the Chrome binary to the target directory
+mv opt/google/chrome/* $HOME/chrome/opt/google/chrome/
 
 # Clean up
 rm -rf opt google-chrome-stable_current_amd64.deb data.tar.xz
 
 # Verify installation
-$HOME/chrome/google-chrome --version
+$HOME/chrome/opt/google/chrome/google-chrome --version
 
 echo "Chrome installed successfully."
