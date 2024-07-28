@@ -16,7 +16,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
-scheduler = BackgroundScheduler()
+# scheduler = BackgroundScheduler()
 
 def mark_attendance():
     chrome_options = Options()
@@ -82,7 +82,7 @@ def mark_attendance():
 @app.route('/')
 def index():
     mark_attendance()
-    return  f"Attendance marked {datetime.now().strftime("%B %d, %Y, %I:%M %p")}"
+    return  f'Attendance marked {datetime.now().strftime("%B %d, %Y, %I:%M %p")}'
 
 if __name__ == "__main__":
     app.run()
