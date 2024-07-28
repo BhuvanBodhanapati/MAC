@@ -25,6 +25,8 @@ def mark_attendance():
     chrome_options.add_argument('--disable-dev-shm-usage')  # Overcome limited resource problems
     chrome_options.add_argument('--log-level=3')  # Suppress logging
 
+    chrome_options.binary_location = '/usr/bin/google-chrome'
+
     driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     url = 'https://app.hrone.cloud/login'  # Replace with the actual URL
 
